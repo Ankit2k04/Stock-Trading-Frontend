@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function Signup() {
+function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -19,40 +18,26 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const res = await axios.post("https://stock-trading-backend-6lho.onrender.com/api/auth/signup", formData);/////////
+      const res = await axios.post("https://stock-trading-backend-6lho.onrender.com/api/auth/login", formData);
 
-      // Save token and user info
+      // Token and user save
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      window.location.href = "http://localhost:3001"; // dashboard app ka URL
+      // Redirect to dashboard (ya jo bhi tu chahe)
+      window.location.href = "http://localhost:3001";
     } catch (err) {
       console.error(err);
-      alert(err.response?.data?.message || "Signup failed! Please try again.");
+      alert(err.response?.data?.message || "Login failed! Please try again.");
     }
   };
-
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
       <div className="card shadow p-4" style={{ width: "350px", borderRadius: "12px" }}>
-        <h3 className="text-center mb-4">Create Account</h3>
+        <h3 className="text-center mb-4">Login</h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label className="form-label">Full Name</label>
-            <input
-              type="text"
-              name="name"
-              className="form-control"
-              placeholder="Enter your name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
           <div className="mb-3">
             <label className="form-label">Email Address</label>
             <input
@@ -80,23 +65,22 @@ function Signup() {
           </div>
 
           <button type="submit" className="btn btn-primary w-100">
-            Sign Up
+            Login
           </button>
         </form>
 
         <p className="text-center mt-3">
-          Already have an account?{" "}
+          Don’t have an account?{" "}
           <span
             className="text-primary"
             style={{ cursor: "pointer" }}
-            onClick={() => navigate("/login")}
+            onClick={() => navigate("/signup")}
           >
-            Login
+            Sign Up
           </span>
         </p>
       </div>
     </div>
   );
 }
-
-export default Signup;
+export default Login;

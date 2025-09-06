@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-link{
+  margin-left: 4rem;
+}
+
+a{
+  text-decoration: none;
+}
+
+.col a{
+  color: gray;
+}
+
+.col p{
+  font-weight: 500;
+  font-size: 16px;
+}
+
+#supportHero{
+  background-color: rgb(56,126,209);
+  color: white;
+}
+
+#supportWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 150px;
+  color:white;
+}
