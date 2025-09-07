@@ -30,7 +30,7 @@ function Login() {
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
       // Redirect to dashboard (ya jo bhi tu chahe)
-      window.location.href = "http://localhost:3001";
+      window.location.href = "https://stock-trading-dashboard-two.vercel.app";
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.message || "Login failed! Please try again.");
