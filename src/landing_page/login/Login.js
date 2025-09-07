@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const API = process.env.REACT_APP_API_URL;
+
 function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -19,7 +21,9 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://stock-trading-backend-6lho.onrender.com/api/auth/login", formData);
+      // const res = await axios.post("https://stock-trading-backend-6lho.onrender.com/api/auth/login", formData);
+      const res = await axios.post(`${API}/api/auth/login`, formData);
+
 
       // Token and user save
       localStorage.setItem("token", res.data.token);

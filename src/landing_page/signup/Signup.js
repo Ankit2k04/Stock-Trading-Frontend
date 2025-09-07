@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
+const API = process.env.REACT_APP_API_URL;
+
 function Signup() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -21,7 +24,9 @@ function Signup() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://stock-trading-backend-6lho.onrender.com/api/auth/signup", formData);/////////
+      // const res = await axios.post("https://stock-trading-backend-6lho.onrender.com/api/auth/signup", formData);/////////
+      const res = await axios.post(`${API}/api/auth/signup`, formData);
+
 
       // Save token and user info
       localStorage.setItem("token", res.data.token);
