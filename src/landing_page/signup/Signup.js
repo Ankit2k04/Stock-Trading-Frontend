@@ -32,7 +32,7 @@ function Signup() {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      window.location.href = "http://localhost:3001"; // dashboard app ka URL
+      window.location.href = "https://stock-trading-dashboard-two.vercel.app"; // dashboard app ka URL
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.message || "Signup failed! Please try again.");
